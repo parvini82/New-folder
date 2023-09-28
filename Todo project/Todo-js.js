@@ -15,7 +15,7 @@ function add() {
   var name = document.getElementById("task-name").value;
   var description = document.getElementById("task-description").value;
   var date = $('#datepicker').datepicker('getDate');
-  var priority = 1;
+  var priority = document.getElementById("task-priority").value;
 
   if (name.trim() === '') {
     alert('Please enter a task name.');
@@ -25,7 +25,7 @@ function add() {
   var newTask = new Task(name, description, date, priority);
   Tasks.push(newTask);
 
-  var taskItem = $('<li>').addClass('list-group-item task-item').text(newTask.toString());
+  var taskItem = $('<li>').addClass('list-group-item task-ite '+colorSelector(priority)+'').text(newTask.toString());
     $('#task-list').append(taskItem);
   clear();
 }
@@ -42,4 +42,17 @@ function formatDate(date) {
   var year = date.getFullYear();
 
   return month + '-' + day + '-' + year;
+}
+function colorSelector(priority){
+  switch (priority) {
+    case "low":
+      return "bg-primary"
+    case "medium":
+      return "bg-warning"
+    case "high":
+      return "bg-danger"  
+  
+  }
+
+
 }

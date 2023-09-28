@@ -43,11 +43,21 @@
             </div>
             
         </div>
-        <div>
-            <h3>Task List</h3>
-            <ul id="task-list" class="list-group">
-            </ul>
-        </div>
+        <ul id="task-list" class="list-group">
+            
+            <li class="list-group-item">
+                <div class="task-item">
+                    <div class="task-info">
+                        <input type="checkbox" class="task-checkbox">
+                        <span class="task-name">Task Name</span>
+                        <span class="task-description">Task Description</span>
+                        <span class="task-date">Task Date</span>
+                        <span class="task-priority">Task Priority</span>
+                    </div>
+                    <button class="btn btn-danger delete-task">Delete</button>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

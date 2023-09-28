@@ -7,7 +7,7 @@ function Task(name, description, date, priority) {
   this.priority = priority;
 }
 
-Task.prototype.toString = function() {
+Task.prototype.toString = function () {
   return "Name: " + this.name + ", Description: " + this.description + ", Date: " + formatDate(this.date) + ", Priority: " + this.priority;
 };
 
@@ -25,8 +25,8 @@ function add() {
   var newTask = new Task(name, description, date, priority);
   Tasks.push(newTask);
 
-  var taskItem = $('<li>').addClass('list-group-item task-ite '+colorSelector(priority)+'').text(newTask.toString());
-    $('#task-list').append(taskItem);
+  var taskItem = $('<li>').addClass('list-group-item task-item ' + colorSelector(priority) + '').text(newTask.toString());
+  $('#task-list').append(taskItem);
   clear();
 }
 
@@ -43,16 +43,29 @@ function formatDate(date) {
 
   return month + '-' + day + '-' + year;
 }
-function colorSelector(priority){
+
+function colorSelector(priority) {
   switch (priority) {
     case "low":
-      return "bg-primary"
+      return "bg-primary";
     case "medium":
-      return "bg-warning"
+      return "bg-warning";
     case "high":
-      return "bg-danger"  
-  
+      return "bg-danger";
   }
+}
 
+var checkboxes = document.getElementsByClassName('task-checkbox');
+for (var i = 0; i < checkboxes.length; i++) {
+  checkboxes[i].addEventListener('change', handleTaskCompletion);
+}
 
+function handleTaskCompletion(event) {
+  var checkbox = event.target;
+  var taskItem = checkbox.parentNode.parentNode;
+  if (checkbox.checked) {
+    taskItem.classList.add('completed');
+  } else {
+    taskItem.classList.remove('completed');
+  }
 }

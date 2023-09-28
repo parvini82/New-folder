@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="Todo-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <div class="task-input">
+            <div class="input-group">
+                <div class="input-group input-group pt-2">
+                    <input type="text" id="task-name" class="form-control" placeholder="name" aria-label="Task"
+                        aria-describedby="">
+                </div>
+                <div class="input-group input-group-lg pt-2">
+                    <textarea id="task-description" class="form-control" placeholder="Description" aria-label="Description" aria-describedby="description-addon"></textarea>
+                    <br>
+                </div>
+                
+                <div id="datepicker" class="input-group date pt-2" data-date-format="mm-dd-yyyy">
+                    <input class="form-control" type="text" placeholder="Date" readonly />
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+                
+                <div id="Priority" class="pt-3">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Select Priority
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">High</a>
+                          <a class="dropdown-item" href="#">Medium</a>
+                          <a class="dropdown-item" href="#">Low</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="add-button" class="pt-3">
+                    <button id="add" class="btn btn-primary pt-2" onclick="add()">Add Task</button>
+                </div>
+            </div>
+            
+        </div>
+        <div>
+            <h3>Task List</h3>
+            <ul id="task-list" class="list-group">
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="Todo-js.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+    </script>
+</body>
+
+</html>

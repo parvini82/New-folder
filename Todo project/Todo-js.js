@@ -24,9 +24,7 @@ function add() {
 
   var newTask = new Task(name, description, date, priority);
   Tasks.push(newTask);
-
-  var taskItem = $('<li>').addClass('list-group-item task-item ' + colorSelector(priority) + '').text(newTask.toString());
-  $('#task-list').append(taskItem);
+  TasksDisplay();
   clear();
 }
 
@@ -67,5 +65,30 @@ function handleTaskCompletion(event) {
     taskItem.classList.add('completed');
   } else {
     taskItem.classList.remove('completed');
+  }
+}
+
+function TasksDisplay() {
+  var taskList = document.getElementById('task-list');
+  taskList.innerHTML = ''; // Clear existing tasks
+  
+  for (var i = 0; i < Tasks.length; i++) {
+    var task = Tasks[i];
+    var taskItem = document.createElement('li');
+    taskItem.classList.add('list-group-item', 'task-item', colorSelector(task.priority));
+    
+    var taskName = document.createElement('h4');
+    taskName.innerText = task.name;
+    taskItem.appendChild(taskName);
+    
+    var taskDescription = document.createElement('p');
+    taskDescription.innerText = task.description;
+    taskItem.appendChild(taskDescription);
+    
+    var taskDate = document.createElement('p');
+    taskDate.innerText = formatDate(task.date);
+    taskItem.appendChild(taskDate);
+    
+    taskList.appendChild(taskItem);
   }
 }
